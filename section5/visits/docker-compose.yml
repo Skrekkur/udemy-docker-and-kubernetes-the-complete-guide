@@ -1,0 +1,17 @@
+version: '3'
+
+services: 
+  redis-server:
+    image: 'redis' 
+  node-app: 
+    restart: on-failure
+    build: .
+    ports:
+      - 4001:8082
+    depends_on: [redis-server]
+
+  node-app-2: 
+    build: .
+    ports:
+      - 4002:8082
+    depends_on: [redis-server]
