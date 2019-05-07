@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t skrekkur/docker-react -f Dockerfile.dev .
+
+script: 
+  - docker run skrekkur/docker-react npm run test -- --coverage
